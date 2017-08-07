@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ddfridley/react-proactive-accordion#readme",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-cli": "^6.24.0",
     "browserify": "^14.4.0"
   },
   "dependencies": {
