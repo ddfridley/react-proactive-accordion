@@ -1,7 +1,4 @@
 #!/usr/bin/bash
 
-npm config ls -l &&
-npm install -dd --only=def && 
+npm install -d --only=dev && 
 ls -ld node_modules/babel*
-
-
