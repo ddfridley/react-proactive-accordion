@@ -1,0 +1,26 @@
+.subject {
+    text-overflow: hidden;
+    font-size: 1.5em;
+    color: darkslategray;
+}
+
+
+.text {
+    font-size: 1em;
+    color: slategray;
+    white-space: pre-line;
+    transition: all linear 0.5s;
+    max-height: 1000px;
+    overflow: hidden;
+}
+
+.accordion-demo {
+    margin: 5em;
+    background: white;
+}
+
+.article{
+    border: 1px solid black;
+    padding: .5em;
+    min-height: 1.5em;
+}
