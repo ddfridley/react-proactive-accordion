@@ -1,8 +1,9 @@
+## http://react-proactive-accordion.herokuapp.com
 # react-proactive-accordion
 A react Component that will expand and collapse it's child over a duration of time.
 Why do we need yet another react accordion? Many accordion's don't work when the child height is initially 0, such as when the child  is not ready yet because data has to be obtained from an external source such as a database or another server.  This Accordion is proactive and will try to expand anyway and will wait through the duration, and if the child get's it's data, and a resulting height, the according will expand around the child.
 
-##Demo
+## Demo
 http://react-proactive-accordion.herokuapp.com
 
 This demo allows you to expand and contract the accordiong (active=true/false).  It also lets you change the duration of the expand/contract and the delay from the start until when the data is available. Note that the data is not available the first time the accordion is rendered, or the first time after you change the delay or duration variable. The active/not active check box will not cause the data to be removed.
