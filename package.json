@@ -5,8 +5,7 @@
   "main": "dist/react-proactive-accordion.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bash postinstall.sh",
-    "preinstall": "npm install --only=dev;"
+    "postinstall": "bash postinstall.sh"
   },
   "repository": {
     "type": "git",
@@ -34,6 +33,6 @@
     "shallowequal": "^1.0.2"
   },
   "engines": {
-    "npm": "4.6.1"
+    "npm": "5.0.3"
   }
 }
