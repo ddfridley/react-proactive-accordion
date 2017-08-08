@@ -16,13 +16,17 @@ The data for the Article is retrieved through ArticleStore, which gets it's data
 Observer that if you make the delay larger than the duration, the onComplete message will appear, though nothing is shown, and later the data will appear.
 
 If you git fork https://github.com/ddfridley/react-proactive-accordion you can open the file dist/demo/demo.html with your browser and it will work. (Tested on windows with edge and chrome). You can also run 
+
     node dist/server.js 
+    
 to fire up a server. http://localhost:5000
 
 To install and run this on heroku, after you have an account and have installed the heroku tool belt:
+
     heroku create
     heroku config:set NPM_CONFIG_PRODUCTION=false
     git push heroku master
+
 Now go to the URL they created for you when you ran heroku create.  
 You have to set NPM_CONFIG_PRODUCTION to false, because other wise npm/heroku won't install the dev dependencies otherwise.
 
