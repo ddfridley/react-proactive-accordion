@@ -1,7 +1,10 @@
 ## http://react-proactive-accordion.herokuapp.com
 # react-proactive-accordion
 A react Component that will expand and collapse it's child over a duration of time.
-Why do we need yet another react accordion? Many accordion's don't work when the child height is initially 0, such as when the child  is not ready yet because data has to be obtained from an external source such as a database or another server.  This Accordion is proactive and will try to expand anyway and will wait through the duration, and if the child get's it's data, and a resulting height, the according will expand around the child.
+
+Why do we need yet another react accordion? Many accordion's don't work when the child height is initially 0, such as when the child  is not ready yet because data has to be obtained from an external source such as a database or another server.  This Accordion is proactive and will try to expand anyway and will wait through the duration until the child get's it's data and a resulting height, then the according will expand around the child.
+
+This accordion is also load adaptive.  If the system is slow to respond, times and distances will be recalculated. If there is a small distance to move, and lost of time, timers will be calculated not to cause unnecessary waste.
 
 ## Demo
 http://react-proactive-accordion.herokuapp.com
@@ -12,7 +15,14 @@ The data for the Article is retrieved through <ArticleStore>, which gets it's da
 
 You can move through the articles by clicking on the subject to expand/contract each one. You can use the forward and back browser buttons. The URL is updated with every user action, and you can save the URL and go back to it.
 
-If you git fork https://github.com/ddfridley/react-proactive-accordion you can open the file dist/demo/demo.html and it should work. (Tested on windows with edge and chrome). You can also run node dist/server.js to fire up a server. http://localhost:5000
+If you git fork https://github.com/ddfridley/react-proactive-accordion you can open the file dist/demo/demo.html and it will work. (Tested on windows with edge and chrome). You can also run node dist/server.js to fire up a server. http://localhost:5000
+
+To install and run this on heroku, after you have an account and have installed the heroku tool belt:
+   heroku create
+   heroku config:set NPM_CONFIG_PRODUCTION=false
+   git push heroku master
+Now go to the URL they created for you when you ran heroku create.  
+You have to set NPM_CONFIG_PRODUCTION to false, because other wise npm/heroku won't install the dev dependencies otherwise.
 
 # Usage
 
