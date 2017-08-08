@@ -1,4 +1,4 @@
-## http://react-proactive-accordion.herokuapp.com
+## [demo] (http://react-proactive-accordion.herokuapp.com)
 # react-proactive-accordion
 A react Component that will expand and collapse it's child over a duration of time.
 
@@ -18,7 +18,7 @@ Observer that if you make the delay larger than the duration, the onComplete mes
 If you git fork https://github.com/ddfridley/react-proactive-accordion you can open the file dist/demo/demo.html with your browser and it will work. (Tested on windows with edge and chrome). You can also run 
 
     node dist/server.js 
-    
+
 to fire up a server. http://localhost:5000
 
 To install and run this on heroku, after you have an account and have installed the heroku tool belt:
