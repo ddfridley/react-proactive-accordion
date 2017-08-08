@@ -20,9 +20,9 @@ If you git fork https://github.com/ddfridley/react-proactive-accordion you can o
 to fire up a server. http://localhost:5000
 
 To install and run this on heroku, after you have an account and have installed the heroku tool belt:
-   heroku create
-   heroku config:set NPM_CONFIG_PRODUCTION=false
-   git push heroku master
+    heroku create
+    heroku config:set NPM_CONFIG_PRODUCTION=false
+    git push heroku master
 Now go to the URL they created for you when you ran heroku create.  
 You have to set NPM_CONFIG_PRODUCTION to false, because other wise npm/heroku won't install the dev dependencies otherwise.
 
@@ -47,6 +47,6 @@ a function to call after the accordion has completed expanding or collapsing.  T
 ## text
 If true the text class is also applied to styling.  The reason for this is that overflow hidden does not work will for text when there are other object in the div, and so overflow-y is used.  But frankly, this isn't perfect either and I wish there was an overflow: hidden that just worked like you think it should for text. 
 
-#Styling
+# Styling
 
 See accordion.css.  CSS class names will be applied to the accordion class when it is 'expanding', 'expanded', 'contracting', 'contracted'.  The 'text' class is also applied if passed to the accordion. You can build on these classes if that helps.
