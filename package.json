@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bash postinstall.sh",
-    "heroku-prebuild": "npm install --only=dev;"
+    "preinstall": "npm install --only=dev;"
   },
   "repository": {
     "type": "git",
