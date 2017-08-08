@@ -9,13 +9,15 @@ This accordion is also load adaptive.  If the system is slow to respond, times a
 ## Demo
 http://react-proactive-accordion.herokuapp.com
 
-This demo allows you to expand and contract the accordiong (active=true/false).  It also lets you change the duration of the expand/contract and the delay from the start until when the data is available. Note that the data is not available the first time the accordion is rendered, or the first time after you change the delay or duration variable. The active/not active check box will not cause the data to be removed.
+This demo allows you to expand and contract the accordion (active=true/false).  It also lets you change the duration of the expand/contract and the delay from the start until when the data is available. Note that the data is not available the first time the accordion is rendered, or the first time after you change the delay or duration variable. The active/not active check box will not cause the data to be removed.
 
-The data for the Article is retrieved through <ArticleStore>, which gets it's data from an array, but more normally this data would come from a data base.  
+The data for the Article is retrieved through ArticleStore, which gets it's data from an array, but represents the idea that data is obtaines from a database or external resource.  
 
-You can move through the articles by clicking on the subject to expand/contract each one. You can use the forward and back browser buttons. The URL is updated with every user action, and you can save the URL and go back to it.
+Observer that if you make the delay larger than the duration, the onComplete message will appear, though nothing is shown, and later the data will appear.
 
-If you git fork https://github.com/ddfridley/react-proactive-accordion you can open the file dist/demo/demo.html and it will work. (Tested on windows with edge and chrome). You can also run node dist/server.js to fire up a server. http://localhost:5000
+If you git fork https://github.com/ddfridley/react-proactive-accordion you can open the file dist/demo/demo.html with your browser and it will work. (Tested on windows with edge and chrome). You can also run 
+    node dist/server.js 
+to fire up a server. http://localhost:5000
 
 To install and run this on heroku, after you have an account and have installed the heroku tool belt:
    heroku create
