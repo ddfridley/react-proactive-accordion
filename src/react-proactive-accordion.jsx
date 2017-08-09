@@ -146,15 +146,15 @@ class Accordion extends React.Component {
     var stepPeriod=this.stepPeriod;
     var that=this;
     var stepper= ()=>{
-      if(this.inClose==='abort'){ this.closeStart=null; this.inClose='inactive'; return; }
+      if(that.inClose==='abort'){ that.closeStart=null; that.inClose='inactive'; return; }
       let now=new Date().getTime();
-      if( (now-this.closeStart >duration)
+      if( (now-that.closeStart >duration)
         ||(lmaxHeight < lheight)
         ||(lheight <= minHeight)) {
-        this.inClose='inactive';
-        this.closeStart=null;
-        var nextFunc= that.props.onComplete ? ()=>that.props.onComplete(true) : null;
-        this.setState({ attr : 'collapsed' }, nextFunc);
+        that.inClose='inactive';
+        that.closeStart=null;
+        var nextFunc= that.props.onComplete ? ()=>that.props.onComplete(false) : null;
+        that.setState({ attr : 'collapsed' }, nextFunc);
         accordion.style.maxHeight=null;
         return;
       }
@@ -170,12 +170,14 @@ class Accordion extends React.Component {
         var shortStepPeriod=stepPeriod;
         if(nextStepDistance<0.5) {
           shortStepPeriod=Math.max(that.stepPeriod, Math.ceil((1-nextStepDistance)*stepPeriod)); // time to the next pixel but at least something
+          console.info('close short',shortStepPeriod);
           setTimeout(stepper,shortStepPeriod); // come back later and less often
           return;
         }
       }
       let newMax = Math.floor(lheight - nextStepDistance); // top of the next step
       accordion.style.maxHeight=newMax+'px'; // set the new height
+      console.info('close',stepPeriod);
       setTimeout(stepper,stepPeriod);
     }
     setTimeout(stepper, stepPeriod) // kick off the stepper
