@@ -170,14 +170,12 @@ class Accordion extends React.Component {
         var shortStepPeriod=stepPeriod;
         if(nextStepDistance<0.5) {
           shortStepPeriod=Math.max(that.stepPeriod, Math.ceil((1-nextStepDistance)*stepPeriod)); // time to the next pixel but at least something
-          console.info('close short',shortStepPeriod);
           setTimeout(stepper,shortStepPeriod); // come back later and less often
           return;
         }
       }
       let newMax = Math.floor(lheight - nextStepDistance); // top of the next step
       accordion.style.maxHeight=newMax+'px'; // set the new height
-      console.info('close',stepPeriod);
       setTimeout(stepper,stepPeriod);
     }
     setTimeout(stepper, stepPeriod) // kick off the stepper
