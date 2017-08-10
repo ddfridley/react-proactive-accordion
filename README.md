@@ -1,8 +1,8 @@
 [demo] (http://react-proactive-accordion.herokuapp.com)
 # react-proactive-accordion
-A react Component that will expand and collapse it's child over a duration of time.
+A React Component that will expand and collapse it's child over a duration of time.
 
-Why do we need yet another react accordion? Many accordion's don't work when the child height is initially 0, such as when the child  is not ready yet because data has to be obtained from an external source such as a database or another server.  This Accordion is proactive and will try to expand anyway and will wait through the duration until the child get's it's data and a resulting height, then the according will expand around the child.
+Why do we need yet another React accordion? Many accordion's don't work when the child height is initially 0, such as when the child  is not ready yet because data has to be obtained from an external source such as a database or another server.  This Accordion is proactive and will try to expand anyway and will wait through the duration until the child get's it's data and a resulting height, then the according will expand around the child.
 
 This accordion is also load adaptive.  If the system is slow to respond, times and distances will be recalculated. If there is a small distance to move, and lost of time, timers will be calculated not to cause unnecessary waste.
 
@@ -39,10 +39,12 @@ You have to set NPM_CONFIG_PRODUCTION to false, because other wise npm/heroku wo
 ## active
 
 true= Accordion is/will expand.
-fale= Accordion is/will collapse.
+
+false= Accordion is/will collapse.
 
 ## duration
 The time in mSec for the expand/collapse to take.
+
 default: 500
 
 ## onComplete 
@@ -56,6 +58,11 @@ If true the text class is also applied to styling.  The reason for this is that 
 
 See accordion.css.  CSS class names will be applied to the accordion class when it is 'expanding', 'expanded', 'contracting', 'contracted'.  The 'text' class is also applied if passed to the accordion. You can build on these classes if that helps.
 
-## Test
-These tests will run on chrome on windows. In some other environment you will have to edit test.sh and change the path.  Chrome will exit if the tests passed and you will get a message. (Othere browsers don't exit). In the future I will put this in selenium or phantomjs.  Jsdom is not sufficient because testing really requires components to be rendered (they need to have different heights).  Also, debugging the tests/src really requires being able to 'see' what's going on. __Note for browser developers__ it was surprisingly easy to build tests that run in the browser, but frustratingly hard to communicate success/failure back to the shell.  I'm also thinking about combining the demo and the test into one.
+# Test
+
+These tests will run on chrome on windows. In some other environment you will have to edit test.sh and change the path.  Chrome will exit if the tests passed and you will get a message. (Othere browsers don't exit). In the future I will put this in selenium or phantomjs.  Jsdom is not sufficient because testing really requires components to be rendered (they need to have different heights).  Also, debugging the tests/src really requires being able to 'see' what's going on.  
+
+__Note for browser developers__ it was surprisingly easy to build tests that run in the browser, but frustratingly difficult to communicate success/failure back to the shell.  I wish window.close(<result>) exited and returned <result> to the shell. (If the process was started from a shell)
+
+I'm also thinking about combining the demo and the test into one. Think of a button in the upper right corner [run] that lets you run the tests and reports on the status.
 
