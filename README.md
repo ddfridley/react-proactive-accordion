@@ -62,7 +62,7 @@ See accordion.css.  CSS class names will be applied to the accordion class when 
 
 These tests will run on chrome on windows. In some other environment you will have to edit test.sh and change the path.  Chrome will exit if the tests passed and you will get a message. (Othere browsers don't exit). In the future I will put this in selenium or phantomjs.  Jsdom is not sufficient because testing really requires components to be rendered (they need to have different heights).  Also, debugging the tests/src really requires being able to 'see' what's going on.  
 
-__Note for browser developers__ it was surprisingly easy to build tests that run in the browser, but frustratingly difficult to communicate success/failure back to the shell.  I wish window.close(<result>) exited and returned <result> to the shell. (If the process was started from a shell)
+__Note for browser developers__ it was surprisingly easy to build tests that run in the browser, but frustratingly difficult to communicate success/failure back to the shell.  I wish window.close(_result_) exited and returned _result_ to the shell. (If the process was started from a shell)
 
 I'm also thinking about combining the demo and the test into one. Think of a button in the upper right corner [run] that lets you run the tests and reports on the status.
 
