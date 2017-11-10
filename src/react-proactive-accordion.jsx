@@ -51,6 +51,10 @@ class Accordion extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    if(this.inOpen!=='inactive') this.inOpen='abort';
+    if(this.inClose!=='inactive') this.inClose='abort';
+  }
 
   inOpen='inactive';
 
