@@ -3,6 +3,10 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
+function getRef(destination,e){
+  if(e) this[destination]=e;
+}
+
 class Accordion extends React.Component {
 
   state = {
@@ -26,6 +30,8 @@ class Accordion extends React.Component {
 
     const stepMaxDuration = props.duration || 500; //* maximum time allowed for a scroll if it were full screen in mSec
     this.stepSize = Math.round(((height * this.stepPeriod) / stepMaxDuration));  //needs to be an int
+    this.getAccordionRef=getRef.bind(this,'accordionRef');
+    this.getAccordionWrapperRef=getRef.bind(this,'accordionWrapperRef');
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,8 +46,8 @@ class Accordion extends React.Component {
 
   componentDidMount() {
     if (this.props.active) {
-      let maxHeight = parseInt(this.refs.accordion.style.maxHeight, 10) || 0;
-      if (this.refs.accordionWrapper.clientHeight >= maxHeight) {
+      let maxHeight = parseInt(this.accordionRef.style.maxHeight, 10) || 0;
+      if (this.accordionWrapperRef.clientHeight >= maxHeight) {
         if (typeof window !== 'undefined') {
           this.smoothOpen();
         } else {
@@ -65,7 +71,7 @@ class Accordion extends React.Component {
     this.inOpen = 'active';
     if (this.inClose !== "inactive") { this.inClose = 'abort' }
     const duration = (this.props.duration || 500); // performance time is in miliseconds
-    let accordion = this.refs.accordion;
+    let accordion = this.accordionRef;
 
     let maxHeight = parseFloat(accordion.style.maxHeight) || 0;
     let height = accordion.clientHeight;
@@ -93,7 +99,7 @@ class Accordion extends React.Component {
       }
       let lmaxHeight = parseFloat(accordion.style.maxHeight) || 0;
       let lheight = accordion.clientHeight;
-      let wheight = that.refs.accordionWrapper ? that.refs.accordionWrapper.clientHeight : 0;
+      let wheight = that.accordionWrapperRef ? that.accordionWrapperRef.clientHeight : 0;
 
       if (wheight) {  // wrapper has a significant height
         let timeRemaining = duration - (now - start);
@@ -127,14 +133,14 @@ class Accordion extends React.Component {
     this.inClose = 'active';
     if (this.inOpen !== 'inactive') { this.inOpen = 'abort'; } //override the open with a close
     const duration = this.props.duration || 500;
-    let accordion = this.refs.accordion;
+    let accordion = this.accordionRef;
 
     let height = accordion.clientHeight;
     accordion.style.maxHeight = Math.floor(height) + 'px';
 
     let minHeight = parseFloat(accordion.style.minHeight) || 0;
-    if (this.refs.accordionWrapper.children[0])
-      minHeight = Math.max(minHeight, parseFloat(this.refs.accordionWrapper.children[0].style.minHeight) || 0); // wrapper is a div which wraps around the innards may have a min-height set
+    if (this.accordionWrapperRef.children[0])
+      minHeight = Math.max(minHeight, parseFloat(this.accordionWrapperRef.children[0].style.minHeight) || 0); // wrapper is a div which wraps around the innards may have a min-height set
 
     this.setState({ attr: 'collapsing' });
 
@@ -187,8 +193,8 @@ class Accordion extends React.Component {
       this.state.attr
     );
     return (
-      <section className={classes} ref='accordion' style={this.props.style} onClick={this.props.onClick} >
-        <div ref='accordionWrapper' >
+      <section className={classes} ref={this.getAccordionRef} style={this.props.style} onClick={this.props.onClick} >
+        <div ref={this.getAccordionWrapperRef} >
           {this.props.children}
         </div>
       </section>

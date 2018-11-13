@@ -310,6 +310,10 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function getRef(destination, e) {
+  if (e) this[destination] = e;
+}
+
 var Accordion =
 /*#__PURE__*/
 function (_React$Component) {
@@ -351,6 +355,8 @@ function (_React$Component) {
 
     _this.stepSize = Math.round(height * _this.stepPeriod / stepMaxDuration); //needs to be an int
 
+    _this.getAccordionRef = getRef.bind(_assertThisInitialized(_assertThisInitialized(_this)), 'accordionRef');
+    _this.getAccordionWrapperRef = getRef.bind(_assertThisInitialized(_assertThisInitialized(_this)), 'accordionWrapperRef');
     return _this;
   }
 
@@ -369,9 +375,9 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.active) {
-        var maxHeight = parseInt(this.refs.accordion.style.maxHeight, 10) || 0;
+        var maxHeight = parseInt(this.accordionRef.style.maxHeight, 10) || 0;
 
-        if (this.refs.accordionWrapper.clientHeight >= maxHeight) {
+        if (this.accordionWrapperRef.clientHeight >= maxHeight) {
           if (typeof window !== 'undefined') {
             this.smoothOpen();
           } else {
@@ -404,7 +410,7 @@ function (_React$Component) {
 
       var duration = this.props.duration || 500; // performance time is in miliseconds
 
-      var accordion = this.refs.accordion;
+      var accordion = this.accordionRef;
       var maxHeight = parseFloat(accordion.style.maxHeight) || 0;
       var height = accordion.clientHeight;
 
@@ -448,7 +454,7 @@ function (_React$Component) {
 
         var lmaxHeight = parseFloat(accordion.style.maxHeight) || 0;
         var lheight = accordion.clientHeight;
-        var wheight = that.refs.accordionWrapper ? that.refs.accordionWrapper.clientHeight : 0;
+        var wheight = that.accordionWrapperRef ? that.accordionWrapperRef.clientHeight : 0;
 
         if (wheight) {
           // wrapper has a significant height
@@ -499,11 +505,11 @@ function (_React$Component) {
 
 
       var duration = this.props.duration || 500;
-      var accordion = this.refs.accordion;
+      var accordion = this.accordionRef;
       var height = accordion.clientHeight;
       accordion.style.maxHeight = Math.floor(height) + 'px';
       var minHeight = parseFloat(accordion.style.minHeight) || 0;
-      if (this.refs.accordionWrapper.children[0]) minHeight = Math.max(minHeight, parseFloat(this.refs.accordionWrapper.children[0].style.minHeight) || 0); // wrapper is a div which wraps around the innards may have a min-height set
+      if (this.accordionWrapperRef.children[0]) minHeight = Math.max(minHeight, parseFloat(this.accordionWrapperRef.children[0].style.minHeight) || 0); // wrapper is a div which wraps around the innards may have a min-height set
 
       this.setState({
         attr: 'collapsing'
@@ -574,11 +580,11 @@ function (_React$Component) {
       }, this.state.attr);
       return _react.default.createElement("section", {
         className: classes,
-        ref: "accordion",
+        ref: this.getAccordionRef,
         style: this.props.style,
         onClick: this.props.onClick
       }, _react.default.createElement("div", {
-        ref: "accordionWrapper"
+        ref: this.getAccordionWrapperRef
       }, this.props.children));
     }
   }]);
