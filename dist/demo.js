@@ -235,6 +235,15 @@ function (_React$Component3) {
             onComplete: null
           });
         }
+      })), _react.default.createElement("div", null, "accordion text=", _react.default.createElement("input", {
+        type: "checkbox",
+        checked: this.state.text,
+        onChange: function onChange(e) {
+          _this6.setState({
+            text: e.target.checked,
+            onComplete: null
+          });
+        }
       })), _react.default.createElement("div", null, "accordion duration=", _react.default.createElement("input", {
         type: "text",
         defaultValue: this.duration,
@@ -256,6 +265,7 @@ function (_React$Component3) {
       })), _react.default.createElement("div", null, "onComplete", this.state.onComplete), _react.default.createElement(_reactProactiveAccordion.default, {
         duration: this.duration,
         active: this.state.active,
+        text: this.state.text,
         onComplete: function onComplete() {
           var newNow = new Date().getTime();
 

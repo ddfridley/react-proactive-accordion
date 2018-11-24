@@ -100,11 +100,13 @@ class App extends React.Component {
         return (
             <div className="accordion-demo">
                 <div>accordion active=<input type="checkbox" checked={this.state.active} onChange={(e)=>{this.setState({active: e.target.checked, onComplete: null})}} /></div>
+                <div>accordion text=<input type="checkbox" checked={this.state.text} onChange={(e)=>{this.setState({text: e.target.checked, onComplete: null})}} /></div>
                 <div>accordion duration=<input type="text" defaultValue={this.duration} onKeyUp={(e)=>{this.duration=parseInt(e.target.value,10); if(e.keyCode===13) this.setState({onComplete: null})}} /></div>
                 <div>content delay=<input type="text" defaultValue={this.delay} onKeyUp={(e)=>{this.delay=parseInt(e.target.value,10); if(e.keyCode===13) this.setState({onComplete: null})}} /></div>
                 <div>onComplete{this.state.onComplete}</div>
                 <Accordion duration={this.duration}
                            active={this.state.active}
+                           text={this.state.text}
                            onComplete={()=>{var newNow=new Date().getTime(); this.setState({onComplete: ' called after '+(newNow-oldNow)+'mSec'})}} 
                            key={this.duration+'-'+this.delay} >
                     <ArticleStore parent={'5'} delay={this.delay}>

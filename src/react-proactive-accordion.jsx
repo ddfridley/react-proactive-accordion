@@ -1,10 +1,49 @@
 'use strict';
 
 import React from 'react';
-import ClassNames from 'classnames';
+import cx from 'classnames';
+import injectSheet from 'react-jss'
 
 function getRef(destination,e){
   if(e) this[destination]=e;
+}
+
+const styles={
+  accordion: {
+    overflow: 'hidden',
+    'max-height': 0,
+    position: 'relative'
+  
+  },
+  expanding: {
+      overflow: 'hidden',
+      '&$text': {
+        overflow: 'visible',
+        'overflow-y': 'hidden'        
+      }
+  },
+  expanded: {
+      'max-height': 'none',
+      /* overflow nothing */
+      '&$text': {
+        'max-height': 'none',
+        overflow: 'visible'
+      }
+  },
+  collapsing: {
+    overflow: 'hidden',
+    '&$text': {
+      overflow: 'visible',
+      'overflow-y': 'hidden'      
+    }
+  },
+  collapsed: {
+    overflow: 'hidden',
+    '&$text': {
+      overflow: 'hidden'
+    }
+  },
+  text: {}
 }
 
 class Accordion extends React.Component {
@@ -184,16 +223,17 @@ class Accordion extends React.Component {
   }
 
   render() {
-    var classes = ClassNames(
-      this.props.className,
-      'accordion',
-      {
-        'text': this.props.text,
-      },
-      this.state.attr
+    const {className, classes}=this.props;
+    const isText={};
+    isText[classes['text']]=this.props.text;
+    const classNames = cx(
+      className,
+      classes['accordion'],
+      classes[this.state.attr],
+      isText
     );
     return (
-      <section className={classes} ref={this.getAccordionRef} style={this.props.style} onClick={this.props.onClick} >
+      <section className={classNames} ref={this.getAccordionRef} style={this.props.style} onClick={this.props.onClick} >
         <div ref={this.getAccordionWrapperRef} >
           {this.props.children}
         </div>
@@ -202,4 +242,4 @@ class Accordion extends React.Component {
   }
 }
 
-export default Accordion;
+export default injectSheet(styles)(Accordion);

@@ -9,6 +9,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _reactJss = _interopRequireDefault(require("react-jss"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -34,6 +36,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function getRef(destination, e) {
   if (e) this[destination] = e;
 }
+
+var styles = {
+  accordion: {
+    overflow: 'hidden',
+    'max-height': 0,
+    position: 'relative'
+  },
+  expanding: {
+    overflow: 'hidden',
+    '&$text': {
+      overflow: 'visible',
+      'overflow-y': 'hidden'
+    }
+  },
+  expanded: {
+    'max-height': 'none',
+
+    /* overflow nothing */
+    '&$text': {
+      'max-height': 'none',
+      overflow: 'visible'
+    }
+  },
+  collapsing: {
+    overflow: 'hidden',
+    '&$text': {
+      overflow: 'visible',
+      'overflow-y': 'hidden'
+    }
+  },
+  collapsed: {
+    overflow: 'hidden',
+    '&$text': {
+      overflow: 'hidden'
+    }
+  },
+  text: {}
+};
 
 var Accordion =
 /*#__PURE__*/
@@ -296,11 +336,14 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var classes = (0, _classnames.default)(this.props.className, 'accordion', {
-        'text': this.props.text
-      }, this.state.attr);
+      var _this$props = this.props,
+          className = _this$props.className,
+          classes = _this$props.classes;
+      var isText = {};
+      isText[classes['text']] = this.props.text;
+      var classNames = (0, _classnames.default)(className, classes['accordion'], classes[this.state.attr], isText);
       return _react.default.createElement("section", {
-        className: classes,
+        className: classNames,
         ref: this.getAccordionRef,
         style: this.props.style,
         onClick: this.props.onClick
@@ -313,5 +356,6 @@ function (_React$Component) {
   return Accordion;
 }(_react.default.Component);
 
-var _default = Accordion;
+var _default = (0, _reactJss.default)(styles)(Accordion);
+
 exports.default = _default;
