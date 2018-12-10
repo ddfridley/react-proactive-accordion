@@ -6,6 +6,35 @@ Why do we need yet another React accordion? Many accordion's don't work when the
 
 This accordion is also load adaptive.  If the system is slow to respond, times and distances will be recalculated. If there is a small distance to move, and lost of time, timers will be calculated not to cause unnecessary waste.
 
+# Server side rendering
+Note that when an accordion renders on the server side, it immediately renders as active or inactive without a transition time.
+
+react-proactive-accordion uses react-jss to include css classes in the javascript source.  If you are rendering on the client side, there is worry, and no need to include a separate css file.  If you are rendering on the server side, you will need to follow the server side rendering guidelines from react-jss.
+
+Namely:
+
+    import {renderToString} from 'react-dom/server';
+    import { JssProvider, SheetsRegistry } from 'react-jss'
+    ...
+        const sheets= new SheetsRegistry()
+        const body = renderToString(
+            <JssProvider registry={sheets}>
+                <App {...props}/>
+            </JssProvider>
+        )
+
+    ...
+        res.send(
+            `...
+            <style type="text/css">
+                ${sheets.toString()}
+            </style>
+
+            ...
+            <div id="synapp">${body}</div>
+            ...`
+        )
+
 ## Demo
 http://react-proactive-accordion.herokuapp.com
 

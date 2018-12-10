@@ -1,6 +1,6 @@
 {
   "name": "react-proactive-accordion",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "An accordion that will grow the height, even when the child doesn't know yet",
   "main": "dist/react-proactive-accordion.js",
   "scripts": {
@@ -50,8 +50,8 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "express": "^4.16.4",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-jss": "^8.6.1",
     "shallowequal": "^1.1.0"
   },
