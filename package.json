@@ -39,7 +39,6 @@
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
     "@babel/runtime": "^7.12.5",
-    "browserify": "^16.2.3",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "react-test-renderer": "^16.6.1",
@@ -48,6 +47,7 @@
   },
   "dependencies": {
     "@babel/cli": "^7.12.8",
+    "browserify": "^16.2.3",
     "classnames": "^2.2.6",
     "express": "^4.16.4",
     "react": "^16.8.6",
