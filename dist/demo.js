@@ -1,5 +1,7 @@
 'use strict';
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
@@ -8,9 +10,7 @@ var _reactProactiveAccordion = _interopRequireDefault(require("./react-proactive
 
 var _arguments = arguments;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -18,25 +18,33 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 window.logger = {};
 
@@ -86,14 +94,12 @@ var demoData = [{
   id: '6'
 }];
 
-var Article =
-/*#__PURE__*/
-function (_React$Component) {
+var Article = /*#__PURE__*/function (_React$Component) {
   _inherits(Article, _React$Component);
 
-  function Article() {
-    var _getPrototypeOf2;
+  var _super = _createSuper(Article);
 
+  function Article() {
     var _this;
 
     _classCallCheck(this, Article);
@@ -102,9 +108,9 @@ function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Article)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "mounted", []);
+    _defineProperty(_assertThisInitialized(_this), "mounted", []);
 
     return _this;
   }
@@ -117,11 +123,11 @@ function (_React$Component) {
           subject = _this$props$articles$.subject,
           text = _this$props$articles$.text,
           id = _this$props$articles$.id;
-      return _react.default.createElement("div", {
+      return /*#__PURE__*/_react["default"].createElement("div", {
         className: 'article'
-      }, _react.default.createElement("div", {
+      }, /*#__PURE__*/_react["default"].createElement("div", {
         className: 'subject'
-      }, subject), _react.default.createElement("div", {
+      }, subject), /*#__PURE__*/_react["default"].createElement("div", {
         className: 'text',
         ref: "text"
       }, text));
@@ -129,21 +135,21 @@ function (_React$Component) {
   }]);
 
   return Article;
-}(_react.default.Component);
+}(_react["default"].Component);
 
-var ArticleStore =
-/*#__PURE__*/
-function (_React$Component2) {
+var ArticleStore = /*#__PURE__*/function (_React$Component2) {
   _inherits(ArticleStore, _React$Component2);
+
+  var _super2 = _createSuper(ArticleStore);
 
   function ArticleStore(props) {
     var _this2;
 
     _classCallCheck(this, ArticleStore);
 
-    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(ArticleStore).call(this, props));
+    _this2 = _super2.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "state", {
+    _defineProperty(_assertThisInitialized(_this2), "state", {
       articles: []
     });
 
@@ -155,10 +161,10 @@ function (_React$Component2) {
     value: function renderChildren() {
       var _this3 = this;
 
-      return _react.default.Children.map(this.props.children, function (child) {
+      return _react["default"].Children.map(this.props.children, function (child) {
         var newProps = Object.assign({}, _this3.props, _this3.state);
         delete newProps.children;
-        return _react.default.cloneElement(child, newProps, child.props.children);
+        return /*#__PURE__*/_react["default"].cloneElement(child, newProps, child.props.children);
       });
     }
   }, {
@@ -180,21 +186,19 @@ function (_React$Component2) {
   }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("section", null, this.renderChildren());
+      return /*#__PURE__*/_react["default"].createElement("section", null, this.renderChildren());
     }
   }]);
 
   return ArticleStore;
-}(_react.default.Component);
+}(_react["default"].Component);
 
-var App =
-/*#__PURE__*/
-function (_React$Component3) {
+var App = /*#__PURE__*/function (_React$Component3) {
   _inherits(App, _React$Component3);
 
-  function App() {
-    var _getPrototypeOf3;
+  var _super3 = _createSuper(App);
 
+  function App() {
     var _this5;
 
     _classCallCheck(this, App);
@@ -203,17 +207,16 @@ function (_React$Component3) {
       args[_key2] = arguments[_key2];
     }
 
-    _this5 = _possibleConstructorReturn(this, (_getPrototypeOf3 = _getPrototypeOf(App)).call.apply(_getPrototypeOf3, [this].concat(args)));
+    _this5 = _super3.call.apply(_super3, [this].concat(args));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this5)), "state", {
+    _defineProperty(_assertThisInitialized(_this5), "state", {
       active: true,
-      onComplete: null // the key in the Accordion below causes React to render a new element when either value has changed
-
+      onComplete: null
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this5)), "duration", 500);
+    _defineProperty(_assertThisInitialized(_this5), "duration", 500);
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this5)), "delay", 100);
+    _defineProperty(_assertThisInitialized(_this5), "delay", 100);
 
     return _this5;
   }
@@ -224,9 +227,9 @@ function (_React$Component3) {
       var _this6 = this;
 
       var oldNow = new Date().getTime();
-      return _react.default.createElement("div", {
+      return /*#__PURE__*/_react["default"].createElement("div", {
         className: "accordion-demo"
-      }, _react.default.createElement("div", null, "accordion active=", _react.default.createElement("input", {
+      }, /*#__PURE__*/_react["default"].createElement("div", null, "accordion active=", /*#__PURE__*/_react["default"].createElement("input", {
         type: "checkbox",
         checked: this.state.active,
         onChange: function onChange(e) {
@@ -235,7 +238,7 @@ function (_React$Component3) {
             onComplete: null
           });
         }
-      })), _react.default.createElement("div", null, "accordion text=", _react.default.createElement("input", {
+      })), /*#__PURE__*/_react["default"].createElement("div", null, "accordion text=", /*#__PURE__*/_react["default"].createElement("input", {
         type: "checkbox",
         checked: this.state.text,
         onChange: function onChange(e) {
@@ -244,7 +247,7 @@ function (_React$Component3) {
             onComplete: null
           });
         }
-      })), _react.default.createElement("div", null, "accordion duration=", _react.default.createElement("input", {
+      })), /*#__PURE__*/_react["default"].createElement("div", null, "accordion duration=", /*#__PURE__*/_react["default"].createElement("input", {
         type: "text",
         defaultValue: this.duration,
         onKeyUp: function onKeyUp(e) {
@@ -253,7 +256,7 @@ function (_React$Component3) {
             onComplete: null
           });
         }
-      })), _react.default.createElement("div", null, "content delay=", _react.default.createElement("input", {
+      })), /*#__PURE__*/_react["default"].createElement("div", null, "content delay=", /*#__PURE__*/_react["default"].createElement("input", {
         type: "text",
         defaultValue: this.delay,
         onKeyUp: function onKeyUp(e) {
@@ -262,7 +265,7 @@ function (_React$Component3) {
             onComplete: null
           });
         }
-      })), _react.default.createElement("div", null, "onComplete", this.state.onComplete), _react.default.createElement(_reactProactiveAccordion.default, {
+      })), /*#__PURE__*/_react["default"].createElement("div", null, "onComplete", this.state.onComplete), /*#__PURE__*/_react["default"].createElement(_reactProactiveAccordion["default"], {
         duration: this.duration,
         active: this.state.active,
         text: this.state.text,
@@ -274,14 +277,14 @@ function (_React$Component3) {
           });
         },
         key: this.duration + '-' + this.delay
-      }, _react.default.createElement(ArticleStore, {
+      }, /*#__PURE__*/_react["default"].createElement(ArticleStore, {
         parent: '5',
         delay: this.delay
-      }, _react.default.createElement(Article, null))));
+      }, /*#__PURE__*/_react["default"].createElement(Article, null))));
     }
   }]);
 
   return App;
-}(_react.default.Component);
+}(_react["default"].Component);
 
-_reactDom.default.render(_react.default.createElement(App, null), document.getElementById('root'));
+_reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(App, null), document.getElementById('root'));

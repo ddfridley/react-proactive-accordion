@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/ddfridley/react-proactive-accordion#readme",
   "devDependencies": {
-    "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-proposal-decorators": "^7.12.1",
@@ -48,6 +47,7 @@
     "should-enzyme": "^2.1.0"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.8",
     "classnames": "^2.2.6",
     "express": "^4.16.4",
     "react": "^16.8.6",
