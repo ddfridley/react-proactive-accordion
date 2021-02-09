@@ -227,14 +227,13 @@ class Accordion extends React.Component {
     const isText={};
     isText[classes['text']]=this.props.text;
     const classNames = cx(
-      className,
       classes['accordion'],
       classes[this.state.attr],
       isText
     );
     return (
-      <div className={classNames} ref={this.getAccordionRef} {...otherProps} >
-        <div ref={this.getAccordionWrapperRef} >
+      <div className={classNames} ref={this.getAccordionRef}  >
+        <div className={className} {...otherProps} ref={this.getAccordionWrapperRef} >
           {this.props.children}
         </div>
       </div>

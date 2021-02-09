@@ -645,13 +645,15 @@ var Accordion = /*#__PURE__*/function (_React$Component) {
 
       var isText = {};
       isText[classes['text']] = this.props.text;
-      var classNames = (0, _classnames["default"])(className, classes['accordion'], classes[this.state.attr], isText);
-      return /*#__PURE__*/_react["default"].createElement("div", _extends({
+      var classNames = (0, _classnames["default"])(classes['accordion'], classes[this.state.attr], isText);
+      return /*#__PURE__*/_react["default"].createElement("div", {
         className: classNames,
         ref: this.getAccordionRef
-      }, otherProps), /*#__PURE__*/_react["default"].createElement("div", {
+      }, /*#__PURE__*/_react["default"].createElement("div", _extends({
+        className: className
+      }, otherProps, {
         ref: this.getAccordionWrapperRef
-      }, this.props.children));
+      }), this.props.children));
     }
   }]);
 
