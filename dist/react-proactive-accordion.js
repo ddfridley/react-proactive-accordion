@@ -15,6 +15,12 @@ var _reactJss = _interopRequireDefault(require("react-jss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -342,16 +348,16 @@ var Accordion = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           className = _this$props.className,
-          classes = _this$props.classes;
+          classes = _this$props.classes,
+          otherProps = _objectWithoutProperties(_this$props, ["className", "classes"]);
+
       var isText = {};
       isText[classes['text']] = this.props.text;
       var classNames = (0, _classnames["default"])(className, classes['accordion'], classes[this.state.attr], isText);
-      return /*#__PURE__*/_react["default"].createElement("section", {
+      return /*#__PURE__*/_react["default"].createElement("div", _extends({
         className: classNames,
-        ref: this.getAccordionRef,
-        style: this.props.style,
-        onClick: this.props.onClick
-      }, /*#__PURE__*/_react["default"].createElement("div", {
+        ref: this.getAccordionRef
+      }, otherProps), /*#__PURE__*/_react["default"].createElement("div", {
         ref: this.getAccordionWrapperRef
       }, this.props.children));
     }

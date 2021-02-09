@@ -223,7 +223,7 @@ class Accordion extends React.Component {
   }
 
   render() {
-    const {className, classes}=this.props;
+    const {className, classes, ...otherProps}=this.props;
     const isText={};
     isText[classes['text']]=this.props.text;
     const classNames = cx(
@@ -233,11 +233,11 @@ class Accordion extends React.Component {
       isText
     );
     return (
-      <section className={classNames} ref={this.getAccordionRef} style={this.props.style} onClick={this.props.onClick} >
+      <div className={classNames} ref={this.getAccordionRef} {...otherProps} >
         <div ref={this.getAccordionWrapperRef} >
           {this.props.children}
         </div>
-      </section>
+      </div>
     );
   }
 }
